@@ -1,0 +1,148 @@
+package com.alchotest.spring.jwt.mongodb.controllers;
+
+import com.alchotest.spring.jwt.mongodb.exception.BadRoleException;
+import com.alchotest.spring.jwt.mongodb.exception.UserNotFoundException;
+import com.alchotest.spring.jwt.mongodb.models.*;
+import com.alchotest.spring.jwt.mongodb.payload.request.RegisterManyStudentRequest;
+import com.alchotest.spring.jwt.mongodb.payload.request.SignUpRequest;
+import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
+import com.alchotest.spring.jwt.mongodb.repository.ManyStudentsRepository;
+import com.alchotest.spring.jwt.mongodb.repository.RoleRepository;
+import com.alchotest.spring.jwt.mongodb.repository.StudentRepository;
+import com.alchotest.spring.jwt.mongodb.services.IClassesService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import com.alchotest.spring.jwt.mongodb.exception.ClassNotFoundException;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.*;
+
+
+@RestController
+@RequestMapping("/api/student")
+@CrossOrigin(origins = "*", maxAge = 3600)
+public class StudentController {
+
+    private final StudentRepository studentRepository;
+    private final RoleRepository roleRepository;
+    private final IClassesService classesService;
+    private final PasswordEncoder encoder;
+    private final ManyStudentsRepository manyStudentsRepository;
+
+    @Autowired
+    public StudentController(StudentRepository studentRepository, RoleRepository roleRepository, IClassesService classesService, PasswordEncoder encoder, ManyStudentsRepository manyStudentsRepository) {
+        this.studentRepository = studentRepository;
+        this.roleRepository = roleRepository;
+        this.classesService = classesService;
+        this.encoder = encoder;
+        this.manyStudentsRepository = manyStudentsRepository;
+    }
+
+    @PostMapping("/registerStudent")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> registerStudent(@Valid @RequestBody SignUpRequest signUpRequest) {
+        if (studentRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (studentRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        Student student = new Student(
+                signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                signUpRequest.getFirstName(),
+                signUpRequest.getLastName(),
+                signUpRequest.getPatronymic(),
+                encoder.encode(signUpRequest.getPassword())
+        );
+
+        Set<String> strRoles = signUpRequest.getRoles();
+        Set<String> strClasses = signUpRequest.getClasses();
+        Set<Classes> classes = new HashSet<>();
+        Set<Role> roles = new HashSet<>();
+
+        if (strRoles == null) {
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                    .orElseThrow(() -> new BadRoleException("Error: Role not found."));
+            roles.add(userRole);
+        } else {
+            strRoles.forEach(role -> {
+                Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new BadRoleException("Error: Role not found."));
+                roles.add(userRole);
+            });
+        }
+        assert strClasses != null;
+        strClasses.forEach(c -> {
+            Classes classes1 = classesService.findById(c).orElseThrow(() -> new ClassNotFoundException("Error: Class not found"));
+            classes.add(classes1);
+        });
+
+
+        student.setRoles(roles);
+        student.setClasses(classes);
+        studentRepository.save(student);
+        return ResponseEntity.ok(new MessageResponse("Student registered successfully!"));
+    }
+
+    @PostMapping("/registerManyStudents")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> registerManyStudents(@Valid @RequestBody RegisterManyStudentRequest signUpRequest) {
+
+        ListOfManyStudents list = new ListOfManyStudents(signUpRequest.getStudents());
+
+        manyStudentsRepository.save(list);
+        return ResponseEntity.ok(new MessageResponse("Students successful registered"));
+    }
+
+    @PutMapping("/updateStudent/{id}")
+    public Student updateStudent(@PathVariable String id, @RequestBody Student user) {
+
+        Optional<Student> byId = studentRepository.findById(id);
+        if (byId.isPresent()) {
+            Student student = byId.get();
+
+            if (student.getUsername().equals(user.getUsername())) {
+                student.setUsername(user.getUsername());
+            } else if (studentRepository.existsByUsername(user.getUsername())) {
+                throw new RuntimeException("Error: username is already exist!");
+            }
+            if (student.getEmail().equals(user.getEmail())) {
+                student.setEmail(user.getEmail());
+            } else if (studentRepository.existsByEmail(user.getEmail())) {
+                throw new RuntimeException("Error: email is already exist!");
+            }
+
+            student.setUsername(user.getUsername());
+            student.setFirstName(user.getFirstName());
+            student.setLastName(user.getLastName());
+            student.setPatronymic(user.getPatronymic());
+            student.setEmail(user.getEmail());
+            student.setRoles(user.getRoles());
+
+            Set<String> strClass = user.getClasses2();
+            Set<Classes> classes = new HashSet<>();
+
+            assert strClass != null;
+            strClass.forEach(x -> {
+                Classes classes1 = classesService.findById(x).orElseThrow(() -> new ClassNotFoundException("Error: Class not found"));
+                classes.add(classes1);
+            });
+
+            student.setClasses(classes);
+            return studentRepository.save(student);
+        } else {
+            throw new UserNotFoundException("user not found");
+        }
+    }
+
+}
