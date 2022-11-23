@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class ManyStudents {
+public class ManyEmployees {
 
     private String id;
     private String username;
@@ -17,7 +17,7 @@ public class ManyStudents {
     private String password;
     private Set<String> classes = new HashSet<>();
 
-    public ManyStudents(String username, String email, String firstName, String lastName, String patronymic, String password, Set<String> classes) {
+    public ManyEmployees(String username, String email, String firstName, String lastName, String patronymic, String password, Set<String> classes) {
         this.username = username;
         this.email = email;
         this.firstName = firstName;

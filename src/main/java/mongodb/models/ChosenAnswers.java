@@ -29,7 +29,7 @@ public class ChosenAnswers {
     private String comments;
 
     @DBRef
-    private Student studentId;
+    private Employee studentId;
 
     private List<ChosenAnswer> questionsPassing = new ArrayList<>();
 

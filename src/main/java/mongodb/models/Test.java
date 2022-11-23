@@ -42,7 +42,7 @@ public class Test {
     private DateTime start;
     private DateTime end;
 
-    private List<PassedStudents> passed = new ArrayList<>();
+    private List<PassedEmployees> passed = new ArrayList<>();
 
     @DBRef
     private Set<Question> questionList = new HashSet<>();

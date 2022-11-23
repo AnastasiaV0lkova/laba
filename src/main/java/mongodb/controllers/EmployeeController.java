@@ -3,12 +3,12 @@ package mongodb.controllers;
 import mongodb.exception.BadRoleException;
 import mongodb.exception.UserNotFoundException;
 import mongodb.models.*;
-import mongodb.payload.request.RegisterManyStudentRequest;
+import mongodb.payload.request.RegisterManyEmployeeRequest;
 import mongodb.payload.request.SignUpRequest;
 import mongodb.payload.response.MessageResponse;
-import mongodb.repository.ManyStudentsRepository;
+import mongodb.repository.ManyEmployeesRepository;
 import mongodb.repository.RoleRepository;
-import mongodb.repository.StudentRepository;
+import mongodb.repository.EmployeeRepository;
 import mongodb.services.IClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +22,18 @@ import java.util.*;
 
 
 @RestController
-@RequestMapping("/api/student")
+@RequestMapping("/api/employee")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class StudentController {
+public class EmployeeController {
 
-    private final StudentRepository studentRepository;
+    private final EmployeeRepository studentRepository;
     private final RoleRepository roleRepository;
     private final IClassesService classesService;
     private final PasswordEncoder encoder;
-    private final ManyStudentsRepository manyStudentsRepository;
+    private final ManyEmployeesRepository manyStudentsRepository;
 
     @Autowired
-    public StudentController(StudentRepository studentRepository, RoleRepository roleRepository, IClassesService classesService, PasswordEncoder encoder, ManyStudentsRepository manyStudentsRepository) {
+    public EmployeeController(EmployeeRepository studentRepository, RoleRepository roleRepository, IClassesService classesService, PasswordEncoder encoder, ManyEmployeesRepository manyStudentsRepository) {
         this.studentRepository = studentRepository;
         this.roleRepository = roleRepository;
         this.classesService = classesService;
@@ -56,7 +56,7 @@ public class StudentController {
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        Student student = new Student(
+        Employee student = new Employee(
                 signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 signUpRequest.getFirstName(),
@@ -96,20 +96,20 @@ public class StudentController {
 
     @PostMapping("/registerManyStudents")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<?> registerManyStudents(@Valid @RequestBody RegisterManyStudentRequest signUpRequest) {
+    public ResponseEntity<?> registerManyStudents(@Valid @RequestBody RegisterManyEmployeeRequest signUpRequest) {
 
-        ListOfManyStudents list = new ListOfManyStudents(signUpRequest.getStudents());
+        ListOfManyEmployees list = new ListOfManyEmployees(signUpRequest.getStudents());
 
         manyStudentsRepository.save(list);
         return ResponseEntity.ok(new MessageResponse("Students successful registered"));
     }
 
     @PutMapping("/updateStudent/{id}")
-    public Student updateStudent(@PathVariable String id, @RequestBody Student user) {
+    public Employee updateStudent(@PathVariable String id, @RequestBody Employee user) {
 
-        Optional<Student> byId = studentRepository.findById(id);
+        Optional<Employee> byId = studentRepository.findById(id);
         if (byId.isPresent()) {
-            Student student = byId.get();
+            Employee student = byId.get();
 
             if (student.getUsername().equals(user.getUsername())) {
                 student.setUsername(user.getUsername());

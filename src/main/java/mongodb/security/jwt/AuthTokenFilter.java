@@ -1,6 +1,6 @@
 package mongodb.security.jwt;
 
-import com.alchotest.spring.jwt.mongodb.services.UserDetailsServiceImpl;
+import mongodb.services.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

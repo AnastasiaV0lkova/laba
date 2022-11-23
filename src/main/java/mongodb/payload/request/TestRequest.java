@@ -1,7 +1,7 @@
 package mongodb.payload.request;
 
 import mongodb.models.ETestStatus;
-import mongodb.models.PassedStudents;
+import mongodb.models.PassedEmployees;
 import mongodb.models.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +31,7 @@ public class TestRequest {
     private Set<String> questions;
     private List<String> classes;
 
-    private List<PassedStudents> students;
+    private List<PassedEmployees> students;
     private Set<Question> questionList;
     private List<String> assign;
 

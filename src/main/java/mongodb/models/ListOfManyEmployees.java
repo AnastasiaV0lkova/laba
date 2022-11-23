@@ -10,11 +10,11 @@ import java.util.List;
 @Data
 @Document(collection = "users")
 @NoArgsConstructor
-public class ListOfManyStudents {
+public class ListOfManyEmployees {
 
-    private List<ManyStudents> manyStudents = new ArrayList<>();
+    private List<ManyEmployees> manyStudents = new ArrayList<>();
 
-    public ListOfManyStudents(List<ManyStudents> manyStudents) {
+    public ListOfManyEmployees(List<ManyEmployees> manyStudents) {
         this.manyStudents = manyStudents;
     }
 }

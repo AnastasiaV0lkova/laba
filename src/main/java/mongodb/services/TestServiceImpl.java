@@ -2,7 +2,7 @@ package mongodb.services;
 
 import mongodb.models.ChosenAnswers;
 import mongodb.models.Role;
-import mongodb.models.Student;
+import mongodb.models.Employee;
 import mongodb.models.Test;
 import mongodb.repository.TestRepository;
 import org.apache.poi.ss.usermodel.Cell;
@@ -94,7 +94,7 @@ public class TestServiceImpl implements ITestService {
         }
     }
 
-    public static void createListForChosenQuestions(Student student, Row row, List<List<ChosenAnswers>> ch, Test test) {
+    public static void createListForChosenQuestions(Employee student, Row row, List<List<ChosenAnswers>> ch, Test test) {
         Cell cell;
         Set<Role> roles = student.getRoles();
 
@@ -160,7 +160,7 @@ public class TestServiceImpl implements ITestService {
         }
     }
 
-    public static ByteArrayInputStream testsToExcel(List<Test> tests, int rowCount, List<List<ChosenAnswers>> chosenAnswers, List<Student> students, String lang) throws IOException {
+    public static ByteArrayInputStream testsToExcel(List<Test> tests, int rowCount, List<List<ChosenAnswers>> chosenAnswers, List<Employee> students, String lang) throws IOException {
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Workbook workbook = new XSSFWorkbook();
 
@@ -174,7 +174,7 @@ public class TestServiceImpl implements ITestService {
                 rowCount++;
                 createHeaderForChosenQuestionsEng(sheet, rowCount, lang);
 
-                for (Student student : students) {
+                for (Employee student : students) {
                     Row row1 = sheet.createRow(++rowCount);
                     TestServiceImpl.createListForChosenQuestions(student, row1, chosenAnswers, test);
                     

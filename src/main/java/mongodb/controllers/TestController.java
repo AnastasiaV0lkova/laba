@@ -8,7 +8,7 @@ import mongodb.payload.request.TestRequest;
 import mongodb.payload.response.MessageResponse;
 import mongodb.repository.ChosenAnswersRepository;
 import mongodb.repository.QuestionRepository;
-import mongodb.repository.StudentRepository;
+import mongodb.repository.EmployeeRepository;
 import mongodb.services.*;
 import lombok.var;
 import org.joda.time.DateTime;
@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 public class TestController {
 
     private final IClassesService classesService;
-    private final StudentRepository studentRepository;
+    private final EmployeeRepository studentRepository;
     private final QuestionRepository questionRepository;
     private final ISubjService subjService;
     private final IQuestionService questionService;
@@ -42,7 +42,7 @@ public class TestController {
     private final ChosenAnswersRepository chosenAnswersRepository;
 
     @Autowired
-    public TestController(IClassesService classesService, StudentRepository studentRepository, QuestionRepository questionRepository, ISubjService subjService, IQuestionService questionService, TestTypeServiceImpl TestTypeRepository, S3Factory s3Factory, TestServiceImpl testService, ChosenAnswersRepository chosenAnswersRepository) {
+    public TestController(IClassesService classesService, EmployeeRepository studentRepository, QuestionRepository questionRepository, ISubjService subjService, IQuestionService questionService, TestTypeServiceImpl TestTypeRepository, S3Factory s3Factory, TestServiceImpl testService, ChosenAnswersRepository chosenAnswersRepository) {
         this.classesService = classesService;
         this.studentRepository = studentRepository;
         this.questionRepository = questionRepository;
@@ -294,7 +294,7 @@ public class TestController {
             chosenAnswers.add(chosenAnswersRepository.findByTestId(test.getId()));
         }
 
-        List<Student> students = studentRepository.findByClasses(classId);
+        List<Employee> students = studentRepository.findByClasses(classId);
         int rowCount = 0;
         var in = TestServiceImpl.testsToExcel(dataReporting, rowCount, chosenAnswers, students, lang);
         HttpHeaders headers = new HttpHeaders();

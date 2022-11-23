@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
-public class StudentSignUpRequest {
+public class EmployeeSignUpRequest {
     @NotBlank
     @Size(min = 3, max = 60)
     private String username;

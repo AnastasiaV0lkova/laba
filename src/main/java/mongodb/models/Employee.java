@@ -16,7 +16,7 @@ import java.util.Set;
 @Data
 @Document(collection = "users")
 @NoArgsConstructor
-public class Student {
+public class Employee {
     @Id
     private String id;
 
@@ -44,7 +44,7 @@ public class Student {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
-    public Student(String username, String email, String firstName, String lastName, String patronymic, String password) {
+    public Employee(String username, String email, String firstName, String lastName, String patronymic, String password) {
         this.username = username;
         this.email = email;
         this.firstName = firstName;

@@ -25,12 +25,12 @@ public class QuestionController {
     private final QuestionRepository questionRepository;
     private final QuestionServiceImpl questionService;
     private final QuestionTypeRepository questionTypeRepository;
-    private final StudentRepository studentRepository;
+    private final EmployeeRepository studentRepository;
     private final TestRepository testRepository;
     private final ChosenAnswersRepository chosenAnswersRepository;
 
     @Autowired
-    public QuestionController(QuestionRepository questionRepository, QuestionServiceImpl questionService, QuestionTypeRepository questionTypeRepository, TestRepository testRepository, StudentRepository studentRepository, ChosenAnswersRepository chosenAnswersRepository) {
+    public QuestionController(QuestionRepository questionRepository, QuestionServiceImpl questionService, QuestionTypeRepository questionTypeRepository, TestRepository testRepository, EmployeeRepository studentRepository, ChosenAnswersRepository chosenAnswersRepository) {
         this.questionRepository = questionRepository;
         this.questionService = questionService;
         this.questionTypeRepository = questionTypeRepository;
@@ -110,7 +110,7 @@ public class QuestionController {
         Test testId = testRepository.findById(saveRequest.getTestId()).orElseThrow(() -> new QuestionNotFoundException("Error: Test not found!"));
         chosenAnswers.setTestId(testId);
 
-        Student studentId = studentRepository.findById(saveRequest.getStudentId()).orElseThrow(() -> new UserNotFoundException("Error: Student id not found!"));
+        Employee studentId = studentRepository.findById(saveRequest.getStudentId()).orElseThrow(() -> new UserNotFoundException("Error: Student id not found!"));
         chosenAnswers.setStudentId(studentId);
 
         chosenAnswersRepository.save(chosenAnswers);
