@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.payload.request;
+package mongodb.payload.request;
 
-import com.alchotest.spring.jwt.mongodb.models.ChosenAnswer;
+import mongodb.models.ChosenAnswer;
 import lombok.Data;
 
 import java.util.List;

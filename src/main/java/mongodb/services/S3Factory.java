@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.services;
+package mongodb.services;
 
 
 import com.amazonaws.AmazonServiceException;

@@ -1,7 +1,7 @@
-package com.alchotest.spring.jwt.mongodb.services;
+package mongodb.services;
 
-import com.alchotest.spring.jwt.mongodb.models.Subject;
-import com.alchotest.spring.jwt.mongodb.payload.request.SubjRequest;
+import mongodb.models.Subject;
+import mongodb.payload.request.SubjRequest;
 
 import java.util.Optional;
 

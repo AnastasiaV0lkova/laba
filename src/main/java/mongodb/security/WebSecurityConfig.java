@@ -1,8 +1,8 @@
-package com.alchotest.spring.jwt.mongodb.security;
+package mongodb.security;
 
-import com.alchotest.spring.jwt.mongodb.security.jwt.AuthEntryPointJwt;
-import com.alchotest.spring.jwt.mongodb.security.jwt.AuthTokenFilter;
-import com.alchotest.spring.jwt.mongodb.services.UserDetailsServiceImpl;
+import mongodb.security.jwt.AuthEntryPointJwt;
+import mongodb.security.jwt.AuthTokenFilter;
+import mongodb.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

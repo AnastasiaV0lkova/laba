@@ -1,7 +1,7 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
-import com.alchotest.spring.jwt.mongodb.services.S3Factory;
+import mongodb.payload.response.MessageResponse;
+import mongodb.services.S3Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

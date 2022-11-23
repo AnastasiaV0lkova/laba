@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.models;
+package mongodb.models;
 
 public enum EQuestion {
     SINGLE_ANSWER,

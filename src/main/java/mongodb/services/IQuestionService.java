@@ -1,7 +1,7 @@
-package com.alchotest.spring.jwt.mongodb.services;
+package mongodb.services;
 
-import com.alchotest.spring.jwt.mongodb.models.Question;
-import com.alchotest.spring.jwt.mongodb.models.Test;
+import mongodb.models.Question;
+import mongodb.models.Test;
 
 import java.util.List;
 import java.util.Optional;

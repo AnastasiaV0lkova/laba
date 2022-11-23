@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.payload.request;
+package mongodb.payload.request;
 
-import com.alchotest.spring.jwt.mongodb.models.QuestionAnswer;
+import mongodb.models.QuestionAnswer;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

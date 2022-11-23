@@ -1,13 +1,13 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.exception.QuestionNotFoundException;
-import com.alchotest.spring.jwt.mongodb.exception.UserNotFoundException;
-import com.alchotest.spring.jwt.mongodb.models.*;
-import com.alchotest.spring.jwt.mongodb.payload.request.QuestionRequest;
-import com.alchotest.spring.jwt.mongodb.payload.request.SaveRequest;
-import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
-import com.alchotest.spring.jwt.mongodb.repository.*;
-import com.alchotest.spring.jwt.mongodb.services.QuestionServiceImpl;
+import mongodb.exception.QuestionNotFoundException;
+import mongodb.exception.UserNotFoundException;
+import mongodb.models.*;
+import mongodb.payload.request.QuestionRequest;
+import mongodb.payload.request.SaveRequest;
+import mongodb.payload.response.MessageResponse;
+import mongodb.repository.*;
+import mongodb.services.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

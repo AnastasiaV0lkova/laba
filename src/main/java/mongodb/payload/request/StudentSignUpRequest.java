@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.payload.request;
+package mongodb.payload.request;
 
-import com.alchotest.spring.jwt.mongodb.models.Classes;
+import mongodb.models.Classes;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 

@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.security.jwt;
+package mongodb.security.jwt;
 
-import com.alchotest.spring.jwt.mongodb.models.User;
+import mongodb.models.User;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

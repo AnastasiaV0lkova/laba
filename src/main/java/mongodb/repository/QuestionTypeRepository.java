@@ -1,7 +1,7 @@
-package com.alchotest.spring.jwt.mongodb.repository;
+package mongodb.repository;
 
-import com.alchotest.spring.jwt.mongodb.models.EQuestion;
-import com.alchotest.spring.jwt.mongodb.models.QuestionType;
+import mongodb.models.EQuestion;
+import mongodb.models.QuestionType;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

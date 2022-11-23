@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.payload.request;
+package mongodb.payload.request;
 
 import lombok.Data;
 

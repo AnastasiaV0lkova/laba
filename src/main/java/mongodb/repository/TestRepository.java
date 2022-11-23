@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.repository;
+package mongodb.repository;
 
-import com.alchotest.spring.jwt.mongodb.models.Test;
+import mongodb.models.Test;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

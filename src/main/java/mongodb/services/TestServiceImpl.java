@@ -1,10 +1,10 @@
-package com.alchotest.spring.jwt.mongodb.services;
+package mongodb.services;
 
-import com.alchotest.spring.jwt.mongodb.models.ChosenAnswers;
-import com.alchotest.spring.jwt.mongodb.models.Role;
-import com.alchotest.spring.jwt.mongodb.models.Student;
-import com.alchotest.spring.jwt.mongodb.models.Test;
-import com.alchotest.spring.jwt.mongodb.repository.TestRepository;
+import mongodb.models.ChosenAnswers;
+import mongodb.models.Role;
+import mongodb.models.Student;
+import mongodb.models.Test;
+import mongodb.repository.TestRepository;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

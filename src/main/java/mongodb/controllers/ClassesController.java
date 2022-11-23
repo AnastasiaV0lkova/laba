@@ -1,9 +1,9 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.models.Classes;
-import com.alchotest.spring.jwt.mongodb.payload.request.ClassesRequest;
-import com.alchotest.spring.jwt.mongodb.repository.ClassesRepository;
-import com.alchotest.spring.jwt.mongodb.services.IClassesService;
+import mongodb.models.Classes;
+import mongodb.payload.request.ClassesRequest;
+import mongodb.repository.ClassesRepository;
+import mongodb.services.IClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

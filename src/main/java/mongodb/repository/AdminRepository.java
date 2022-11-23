@@ -1,6 +1,6 @@
-package com.alchotest.spring.jwt.mongodb.repository;
+package mongodb.repository;
 
-import com.alchotest.spring.jwt.mongodb.models.Admin;
+import mongodb.models.Admin;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface AdminRepository extends MongoRepository<Admin, String> {

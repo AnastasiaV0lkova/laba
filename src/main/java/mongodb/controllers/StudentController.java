@@ -1,20 +1,20 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.exception.BadRoleException;
-import com.alchotest.spring.jwt.mongodb.exception.UserNotFoundException;
-import com.alchotest.spring.jwt.mongodb.models.*;
-import com.alchotest.spring.jwt.mongodb.payload.request.RegisterManyStudentRequest;
-import com.alchotest.spring.jwt.mongodb.payload.request.SignUpRequest;
-import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
-import com.alchotest.spring.jwt.mongodb.repository.ManyStudentsRepository;
-import com.alchotest.spring.jwt.mongodb.repository.RoleRepository;
-import com.alchotest.spring.jwt.mongodb.repository.StudentRepository;
-import com.alchotest.spring.jwt.mongodb.services.IClassesService;
+import mongodb.exception.BadRoleException;
+import mongodb.exception.UserNotFoundException;
+import mongodb.models.*;
+import mongodb.payload.request.RegisterManyStudentRequest;
+import mongodb.payload.request.SignUpRequest;
+import mongodb.payload.response.MessageResponse;
+import mongodb.repository.ManyStudentsRepository;
+import mongodb.repository.RoleRepository;
+import mongodb.repository.StudentRepository;
+import mongodb.services.IClassesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.alchotest.spring.jwt.mongodb.exception.ClassNotFoundException;
+import mongodb.exception.ClassNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

@@ -1,13 +1,13 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.exception.BadRoleException;
-import com.alchotest.spring.jwt.mongodb.models.Admin;
-import com.alchotest.spring.jwt.mongodb.models.ERole;
-import com.alchotest.spring.jwt.mongodb.models.Role;
-import com.alchotest.spring.jwt.mongodb.payload.request.SignUpRequest;
-import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
-import com.alchotest.spring.jwt.mongodb.repository.AdminRepository;
-import com.alchotest.spring.jwt.mongodb.repository.RoleRepository;
+import mongodb.exception.BadRoleException;
+import mongodb.models.Admin;
+import mongodb.models.ERole;
+import mongodb.models.Role;
+import mongodb.payload.request.SignUpRequest;
+import mongodb.payload.response.MessageResponse;
+import mongodb.repository.AdminRepository;
+import mongodb.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

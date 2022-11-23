@@ -1,7 +1,7 @@
-package com.alchotest.spring.jwt.mongodb.repository;
+package mongodb.repository;
 
-import com.alchotest.spring.jwt.mongodb.models.ETestStatus;
-import com.alchotest.spring.jwt.mongodb.models.TestStatus;
+import mongodb.models.ETestStatus;
+import mongodb.models.TestStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

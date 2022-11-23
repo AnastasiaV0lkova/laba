@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.exception;
+package mongodb.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

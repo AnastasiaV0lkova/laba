@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.security;
+package mongodb.security;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;

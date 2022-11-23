@@ -1,8 +1,8 @@
-package com.alchotest.spring.jwt.mongodb.payload.request;
+package mongodb.payload.request;
 
-import com.alchotest.spring.jwt.mongodb.models.ETestStatus;
-import com.alchotest.spring.jwt.mongodb.models.PassedStudents;
-import com.alchotest.spring.jwt.mongodb.models.Question;
+import mongodb.models.ETestStatus;
+import mongodb.models.PassedStudents;
+import mongodb.models.Question;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

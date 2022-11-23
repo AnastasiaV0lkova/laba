@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

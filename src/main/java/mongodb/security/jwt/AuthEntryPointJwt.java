@@ -1,4 +1,4 @@
-package com.alchotest.spring.jwt.mongodb.security.jwt;
+package mongodb.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

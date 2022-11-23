@@ -1,15 +1,15 @@
-package com.alchotest.spring.jwt.mongodb.controllers;
+package mongodb.controllers;
 
-import com.alchotest.spring.jwt.mongodb.exception.ClassNotFoundException;
-import com.alchotest.spring.jwt.mongodb.exception.QuestionNotFoundException;
-import com.alchotest.spring.jwt.mongodb.exception.SubjNotFoundException;
-import com.alchotest.spring.jwt.mongodb.models.*;
-import com.alchotest.spring.jwt.mongodb.payload.request.TestRequest;
-import com.alchotest.spring.jwt.mongodb.payload.response.MessageResponse;
-import com.alchotest.spring.jwt.mongodb.repository.ChosenAnswersRepository;
-import com.alchotest.spring.jwt.mongodb.repository.QuestionRepository;
-import com.alchotest.spring.jwt.mongodb.repository.StudentRepository;
-import com.alchotest.spring.jwt.mongodb.services.*;
+import mongodb.exception.ClassNotFoundException;
+import mongodb.exception.QuestionNotFoundException;
+import mongodb.exception.SubjNotFoundException;
+import mongodb.models.*;
+import mongodb.payload.request.TestRequest;
+import mongodb.payload.response.MessageResponse;
+import mongodb.repository.ChosenAnswersRepository;
+import mongodb.repository.QuestionRepository;
+import mongodb.repository.StudentRepository;
+import mongodb.services.*;
 import lombok.var;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;

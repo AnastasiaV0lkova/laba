@@ -1,8 +1,8 @@
-package com.alchotest.spring.jwt.mongodb.services;
+package mongodb.services;
 
-import com.alchotest.spring.jwt.mongodb.models.Question;
-import com.alchotest.spring.jwt.mongodb.models.Test;
-import com.alchotest.spring.jwt.mongodb.repository.QuestionRepository;
+import mongodb.models.Question;
+import mongodb.models.Test;
+import mongodb.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
