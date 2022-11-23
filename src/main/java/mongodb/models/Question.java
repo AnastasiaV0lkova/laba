@@ -21,7 +21,6 @@ public class Question {
 
     @NotBlank
     private String body;
-
     private String url;
 
     @DBRef
